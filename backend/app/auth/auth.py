@@ -21,7 +21,7 @@ logger = logging.getLogger("bmtc.auth")
 # ── Secret key ──
 #
 # Previously this was a fixed literal committed to source control:
-# SECRET_KEY = "bmtc-ai-predictor-secret-change-in-production-2024"
+# SECRET_KEY = "bmtc-predictor-secret-change-in-production-2024"
 #
 # Anyone who has ever seen this codebase -- this zip, a public repo, a
 # code review, a fork -- already knows that exact string. With it, they

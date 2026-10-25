@@ -250,13 +250,13 @@ def appendices(doc):
     h(doc, 1, "Appendix G - Interview Questions")
     para(doc, "Sections 27 to 29 contain roughly 130 questions with answers. The structure is:")
     table(doc, ["Section", "Contains"], [
-        ["27.1 - 27.9", "Professor defense: basic, architecture, code, database, security, AI,\nfailure, scalability and critical questions, with spoken-length answers"],
+        ["27.1 - 27.9", "Professor defense: basic, architecture, code, database, security, system,\nfailure, scalability and critical questions, with spoken-length answers"],
         ["28.1 - 28.8", "Recruiter and interview: the project pitch, architecture, hardest problem,\ntechnology choices, feature deep dive, scaling, debugging, hindsight"],
         ["29.1 - 29.6", "95 rapid-fire questions with one-line answers, grouped by area"],
         ["30.1 - 30.5", "The same project explained in 30 seconds, 1, 3, 5 and 10 minutes"],
     ], widths=[1.4, 5.4])
     callout(doc, "The three questions most likely to catch you out",
-            "1. \"Where is the AI?\" - There is none; say so plainly and describe the retrieval system "
+            "1. \"Where is the machine learning?\" - There is none; say so plainly and describe the retrieval system "
             "instead. 2. \"How accurate is it?\" - 100% validity (relevance-set), 71.7% rank quality, "
             "19.2% single-label; defend the measurement methodology. 3. \"Is the tracking real?\" - No, it is simulated by default, and the "
             "code is built so it cannot be published as real.", warn=True)
@@ -273,7 +273,7 @@ def appendices(doc):
         ["5", "No token revocation; logout is client-side only", "Medium", "CONFIRMED", "15.5"],
         ["6", "Tokens stored in localStorage (XSS exposure)", "Medium", "CONFIRMED", "15.5, 20.2"],
         ["7", "No multi-document transactions; a crash mid-sign-off\nleaves a waybill inconsistent", "Medium", "CONFIRMED", "14.6, 37"],
-        ["8", "Misleading naming: train() trains nothing; the AI\nassistant is a string parser", "Medium", "CONFIRMED", "16.1, 37"],
+        ["8", "Misleading naming: train() trains nothing; the system\nassistant is a string parser", "Medium", "CONFIRMED", "16.1, 37"],
         ["9", "average_speed_kmph duplicated in two parameter\nclasses that must stay in step", "Medium", "CONFIRMED", "37"],
         ["10", "Weak password policy (min 6) and no email\nverification", "Medium", "CONFIRMED", "15.5, 20.2"],
         ["11", "No login-specific throttling or account lockout", "Medium", "CONFIRMED", "20.2"],

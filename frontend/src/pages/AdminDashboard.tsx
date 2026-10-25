@@ -151,7 +151,7 @@ export default function AdminDashboard() {
             <BlockingSummaryCard token={token} />
 
             {expandedChart && <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.8)', zIndex: 9998, backdropFilter: 'blur(5px)' }} onClick={() => setExpandedChart(null)} />}
-            
+
             {/* Charts */}
             <div className="bento-grid">
               <div className="chart-card bento-card" style={getChartStyle('top_routes')}>
@@ -170,8 +170,8 @@ export default function AdminDashboard() {
                     <Bar dataKey="votes" fill="url(#colorCyan)" radius={[0, 4, 4, 0]} />
                     <defs>
                       <linearGradient id="colorCyan" x1="0" y1="0" x2="1" y2="0">
-                        <stop offset="0%" stopColor="#00e5c8" stopOpacity={0.8}/>
-                        <stop offset="100%" stopColor="#a78bfa" stopOpacity={0.8}/>
+                        <stop offset="0%" stopColor="#00e5c8" stopOpacity={0.8} />
+                        <stop offset="100%" stopColor="#a78bfa" stopOpacity={0.8} />
                       </linearGradient>
                     </defs>
                   </BarChart>

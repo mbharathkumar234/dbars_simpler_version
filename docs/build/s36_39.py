@@ -17,7 +17,7 @@ def section_36(doc):
         ["Scalability", "Rate limiter, plan caches and vehicle\nstore all in process memory", "core/rate_limit.py,\nservice singletons", "High - blocks\nhorizontal scaling"],
         ["Observability", "No global exception handler, no request\nids, no metrics, no tracing", "None registered in\nmain.py", "High - production\ndebugging would be\nguesswork"],
         ["Reliability", "No multi-document transactions", "No start_session use\nanywhere", "Medium - a crash\nmid-sign-off leaves a\nwaybill inconsistent"],
-        ["Naming", "train() does not train. The old string-parser\n'assistant' is superseded by the AI layer (section 40)", "ml/predictor.py", "Medium - actively\nmisleads readers and\ninvites bad claims"],
+        ["Naming", "train() does not train. The old string-parser\n'assistant' is superseded by the intelligence layer (section 40)", "ml/predictor.py", "Medium - actively\nmisleads readers and\ninvites bad claims"],
         ["Dependencies", "@vis.gl/react-google-maps declared but\nnever imported", "No import anywhere\nin src/", "Low - dead weight"],
         ["Dependencies", "numpy, scipy, scikit-learn shipped in\nproduction for a benchmark only", "requirements.txt vs\nml/tfidf.py usage", "Low - image size"],
         ["Frontend", "1.6 MB bundle (468 KB gzipped), no code\nsplitting", "Vite build warning", "Medium - slow first\nload on mobile"],
@@ -47,7 +47,7 @@ def section_36(doc):
         ["1", "Gate POST /train behind admin", "One line", "Closes the clearest security hole"],
         ["2", "Add a global exception handler with\nrequest ids and structured logging", "Half a day", "Turns production debugging from\nguesswork into a lookup"],
         ["3", "Frontend tests, starting with\noffline queue and apiClient", "Two days", "The largest untested surface, and it\nhandles money"],
-        ["4", "Correct the misleading naming\n(train, AI assistant)", "Two hours", "Removes a claim you would otherwise\nhave to defend"],
+        ["4", "Correct the misleading naming\n(train, assistant)", "Two hours", "Removes a claim you would otherwise\nhave to defend"],
         ["5", "Move rate limiting and caches to\nRedis", "Two days", "The precondition for running more\nthan one worker"],
         ["6", "Route-level code splitting", "One day", "Cuts first-load time substantially"],
         ["7", "Login throttling and a stronger\npassword policy", "Half a day", "Closes the practical brute-force path"],
@@ -64,7 +64,7 @@ def section_37(doc):
               "what the shortcut was and what it will cost.")
 
     table(doc, ["Debt", "What it is", "Why it matters"], [
-        ["Misleading names", "train() builds indexes and evaluates; it fits\nnothing. AssistantPanel is called an AI\nassistant but splits strings. The repository\nfolder was once named bmtc-ai-fixed.",
+        ["Misleading names", "train() builds indexes and evaluates; it fits\nnothing. AssistantPanel is called an system\nassistant but splits strings. The repository\nfolder was once named dbars.",
          "Names are documentation. These invite a\nfalse claim in an interview and mislead\nany new developer reading the code."],
         ["No frontend tests", "The backend has 161 tests; the frontend has\nnone, including the offline money queue.",
          "Every frontend change is verified by hand.\nA regression in offlineQueue.ts would lose\nreal sales silently."],
@@ -103,7 +103,7 @@ def section_38(doc):
 
     h(doc, 2, "38.1 Assessment by dimension")
     table(doc, ["Dimension", "Rating", "Observation"], [
-        ["Naming", "Mixed", "Domain vocabulary is excellent and correct: block, duty, piece,\nspreadover, dead kilometres, interlining, revenue service. These are\nthe real terms a transport planner uses. Against that, train() and\n\"AI assistant\" actively mislead."],
+        ["Naming", "Mixed", "Domain vocabulary is excellent and correct: block, duty, piece,\nspreadover, dead kilometres, interlining, revenue service. These are\nthe real terms a transport planner uses. Against that, train() and\n\"assistant\" actively mislead."],
         ["Comments", "Strong", "Unusually good. Comments explain WHY, not what, and several record\nthe bug that motivated the code - for example the note above\nTOKEN_TYPE_ACCESS explaining that a ticket token once authenticated\nas a session. This is the single most valuable quality in the\ncodebase for a new reader."],
         ["Structure", "Strong", "The four-layer split is real and consistently followed. The\ndependency direction (api -> services -> db; api -> ml -> files) is\nnot violated anywhere examined."],
         ["Modularity", "Mixed", "The tracking and gtfs packages are well decomposed. predictor.py is\nnot - over 1,600 lines mixing indexing, ranking, transfer search and\nbenchmarking in one class."],
@@ -186,11 +186,11 @@ def section_39(doc):
          "|   +-- Fleet AVL feed                adapter written, not connected\n"
          "|   +-- OpenStreetMap / CARTO tiles   map background\n"
          "|\n"
-         "+-- AI / ML\n"
+         "+-- ML\n"
          "|   +-- ROUTING ENGINE: no model, no weights, no LLM.\n"
          "|   |   Classical IR + graph search, benchmarked against 3 baselines.\n"
-         "|   +-- AI LAYER (app/ai): FAISS vector store, BM25 + RRF retrieval,\n"
-         "|       8 read-only tools, optional Gemini. Answers questions ABOUT\n"
+         "|   +-- INTELLIGENCE LAYER (app/intelligence): FAISS vector store, BM25 + RRF retrieval,\n"
+         "|       8 read-only tools, optional LLM. Answers questions ABOUT\n"
          "|       the system; never routes a bus. See Sections 40-42.\n"
          "|\n"
          "+-- DEPLOYMENT\n"
@@ -229,7 +229,7 @@ def section_39(doc):
     para(doc, "API. 82 endpoints across fourteen routers. Public: predict, autocomplete, GTFS, "
               "tracking, alerts. Role-gated: all depot planning, conductor money paths, admin "
               "reporting. Interactive docs at /docs.", bold=True)
-    para(doc, "AI. None. The word appears in some UI text and is inaccurate. What exists is an "
+    para(doc, "system. None. The word appears in some UI text and is inaccurate. What exists is an "
               "inverted index plus an ordered stop-pair index with hand-weighted scoring, benchmarked "
               "against TF-IDF, fuzzy and distance-aware baselines - and the shipped model reports the "
               "accuracy of exactly what the API returns rather than a flattering proxy.", bold=True)

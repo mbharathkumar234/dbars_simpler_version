@@ -32,16 +32,12 @@ android/local.properties
 # Build output, not source.
 backend/artifacts/gtfs/
 
-# Claude Code local tool config. Contains absolute paths from the machine it
-# was generated on, and is per-developer state rather than project source.
-.claude/
-
 # OS & Logs
 .DS_Store
 Thumbs.db
 *.log
 
-# Throwaway debug scripts (AI layer development)
+# Scratch scripts
 backend/scratch/
 
 # Any .env variant (backups, per-env copies) -- never commit these
@@ -50,17 +46,6 @@ backend/scratch/
 backend/.env.*
 !backend/.env.example
 
-# Built RAG indices (~6 MB of FAISS binaries plus a metadata file that is a
-# copy of the source already in this repo). Derived from the code, so they go
-# stale the moment it changes. Rebuild with:
-#   cd backend
-#   python -m app.ai.ingestion.pipeline
-#   python -m app.ai.ingestion.doc_pipeline
-backend/artifacts/ai_indices/
-
-# Benchmark reports, regenerated on every evaluation run
-backend/artifacts/ai_benchmark_report.md
-backend/artifacts/codebase_qa_report.md
 
 # Word lock files (created while a .docx is open)
 ~$*

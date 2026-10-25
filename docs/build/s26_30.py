@@ -311,19 +311,19 @@ def section_27(doc):
          "able to produce a session token or an e-ticket."),
     ])
 
-    h(doc, 2, "27.6 AI questions")
+    h(doc, 2, "27.6 Architecture questions")
     callout(doc, "Be ready for this, and answer it straight",
-            "If asked \"where is the AI in your project?\", the correct answer is: there is none. "
+            "If asked \"where is the system in your project?\", the correct answer is: there is none. "
             "Some UI text uses the word and that wording is misleading. What exists is classical "
             "information retrieval and graph search, plus a benchmark comparing four ranking "
             "strategies. Trying to dress that up as machine learning is the fastest way to lose "
             "credibility, because an examiner will ask which model and where the weights are.", warn=True)
     _qa(doc, [
-        ("Did you use AI or machine learning?",
+        ("Did you use system or machine learning?",
          "Not for routing. The search is an inverted index plus an ordered stop-pair index with a "
          "hand-weighted scoring function - classical information retrieval, nothing fitted or "
          "learned. scikit-learn appears only in a TF-IDF benchmark baseline. Separately I built an "
-         "AI layer that answers questions about the system: retrieval over the codebase and docs "
+         "intelligence layer that answers questions about the system: retrieval over the codebase and docs "
          "with a FAISS vector store, and an optional LLM. I would add that only 1.8% of its "
          "benchmark answers actually reach the model - it is retrieval and templating with an LLM "
          "available, and I would not call it LLM-powered."),
@@ -392,7 +392,7 @@ def section_27(doc):
         ("What would you change?",
          "Four things. Gate POST /train behind admin. Add a global exception handler with request "
          "ids. Add frontend tests, starting with the offline queue because it handles money. And "
-         "correct the UI text that says AI, because it does not describe what the code does."),
+         "correct the UI text with inaccurate terms, because it does not describe what the code does."),
         ("What did you learn?",
          "That the hard part was not making features work but making them honest. Several bugs "
          "produced confident, plausible, wrong output - a route map drawing a 69 km line for a 19 km "
@@ -504,7 +504,7 @@ def section_28(doc):
         "Write frontend tests from the start. Having 161 backend tests and zero frontend tests is the clearest imbalance in the project.",
         "Add observability early - request ids, structured logs, timing metrics. I optimised by measuring by hand, which worked but does not scale.",
         "Design the shared-state story before building caches, so horizontal scaling would not need retrofitting.",
-        "Name things accurately from the beginning. Calling index-building \"training\" and a string parser an \"AI assistant\" created confusion I then had to correct.",
+        "Name things accurately from the beginning. Calling index-building \"training\" and a string parser an \"assistant\" created confusion I then had to correct.",
         "Extract shared logic sooner. The stop-resolution bug existed because three subsystems each did the same thing slightly differently.",
     ])
     page_break(doc)

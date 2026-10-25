@@ -60,7 +60,7 @@ async def admin_dashboard(user: dict = Depends(require_role(UserRole.ADMIN))) ->
         else:
             accuracy = 0.0
 
-        # calculate the average time it takes the AI to spit out a prediction
+        # calculate the average time it takes the predictor to spit out a prediction
         avg_pipeline = [
             {"$match": {"response_ms": {"$ne": None}}},
             {"$group": {"_id": None, "avg_ms": {"$avg": "$response_ms"}}}

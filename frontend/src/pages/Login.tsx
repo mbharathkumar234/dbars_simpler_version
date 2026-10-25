@@ -64,8 +64,8 @@ export default function Login() {
 
         <div className="auth-demo-hint">
           <p><strong>Demo accounts:</strong></p>
-          <p>Admin: admin@bmtc.ai / admin123</p>
-          <p>Depot: depot@bmtc.ai / depot123</p>
+          <p>Admin: admin@bmtc.gov.in / admin123</p>
+          <p>Depot: depot@bmtc.gov.in / depot123</p>
         </div>
       </motion.div>
     </div>

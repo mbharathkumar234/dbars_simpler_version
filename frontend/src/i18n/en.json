@@ -24,7 +24,7 @@
     "stat_routes": "Bus Routes",
     "stat_stops": "Bus Stops",
     "stat_response": "Avg Response",
-    "feature_predict_title": "AI Bus Prediction",
+    "feature_predict_title": "Bus Prediction",
     "feature_predict_desc": "Our engine ranks the fastest and most reliable buses by mixing route geometry with live commuter demand.",
     "feature_vote_title": "Commuter Voting",
     "feature_vote_desc": "Vote for the routes you need. Your votes directly influence bus predictions and help BMTC plan better.",

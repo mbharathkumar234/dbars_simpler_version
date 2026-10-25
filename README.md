@@ -157,8 +157,8 @@ Or run them in two separate PowerShell terminals:
 
 | Role | Email | Password | Permissions & Features |
 | :--- | :--- | :--- | :--- |
-| **System Admin** | `admin@bmtc.ai` | `admin123` | Full dashboard, fleet analytics, Shakti scheme claims, audit logs, AI observability |
-| **Depot Manager** | `depot@bmtc.ai` | `depot123` | Blocking scenarios, crew duty planning, waybills & depot rosters |
+| **System Admin** | `admin@bmtc.gov.in` | `admin123` | Full dashboard, fleet analytics, Shakti scheme claims, audit logs, fleet observability |
+| **Depot Manager** | `depot@bmtc.gov.in` | `depot123` | Blocking scenarios, crew duty planning, waybills & depot rosters |
 | **Commuter / Public** | Any new signup | *(User chosen)* | Route prediction, real-time tracking, voting, e-ticket booking, digital pass QR |
 
 ---
@@ -226,23 +226,8 @@ cd backend
 python train.py
 ```
 
-### AI Intelligence RAG Indices (Optional)
-Build the local vector search indices for the AI Codebase and Operations assistants:
 
-```powershell
-cd backend
-.venv\Scripts\activate
-python -m app.ai.ingestion.pipeline        # Codebase index
-python -m app.ai.ingestion.doc_pipeline    # Documentation index
-```
-*(Without these indices, the AI assistant still functions using deterministic transit tools; with them, it cites exact codebase files and documentation).*
-
----
-
-## Testing & Code Quality
-
-### Running the Full Test Suite
-The project includes 757 unit and integration tests covering the ML models, scheduling algorithms, GTFS feed generator, and AI components:
+The project includes unit and integration tests covering the ML models, scheduling algorithms, and GTFS feed generator:
 
 ```powershell
 cd backend
@@ -292,16 +277,7 @@ npm run build
   python -m app.db.seed
   ```
 
-#### 4. `ModuleNotFoundError: No module named 'langchain_core'` during pytest
-- **Cause:** Running plain `pytest` used a global Python interpreter outside the virtual environment.
-- **Fix:** Always invoke pytest through the virtual environment's python:
-  ```powershell
-  cd backend
-  .venv\Scripts\activate
-  python -m pytest tests
-  ```
-
-#### 5. Backend port 8000 already in use / zombie python processes
+#### 4. Backend port 8000 already in use / zombie python processes
 - If you restarted uvicorn and get `[WinError 10048] address already in use`, close existing python workers in PowerShell:
   ```powershell
   Get-Process python -ErrorAction SilentlyContinue | Stop-Process -Force

@@ -1,11 +1,10 @@
 """Regression tests for free-text stop resolution.
 
-Reported as "the copilot is reading wrong": asking for a journey from
+Issue report: asking for a journey from
 "dasarahalli metro station" produced a plan from **Vajarahalli** Metro Station
 -- a different station at the opposite end of the Green Line -- and reported it
-with full confidence. The AI layer was relaying the deterministic engine
-faithfully; `_resolve_stop_name` was the source, so `/predict` and the commuter
-prediction page were equally wrong.
+with full confidence. `_resolve_stop_name` was the source, so `/predict` and the commuter
+prediction page were affected.
 
 Cause: character similarity let a shared *generic* word plus a similar ending
 outrank an exact match on the *distinctive* word.

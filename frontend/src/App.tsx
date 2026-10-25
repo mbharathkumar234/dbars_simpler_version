@@ -2,9 +2,6 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import { AuthProvider, useAuth } from "./contexts/AuthContext";
 import { LanguageProvider } from "./contexts/LanguageContext";
-import { AIProvider } from "./contexts/AIContext";
-import { AIAssistantModal } from "./components/AIAssistantModal";
-import { AIFloatingTrigger } from "./components/AIFloatingTrigger";
 
 // Pages
 import Landing from "./pages/Landing";
@@ -89,18 +86,14 @@ export default function App() {
     <BrowserRouter>
       <AuthProvider>
         <LanguageProvider>
-          <AIProvider>
-            <Toaster
-              position="top-right"
-              toastOptions={{
-                duration: 3000,
-                style: { background: "var(--surface-2)", color: "var(--text-1)", border: "1px solid var(--border)" },
-              }}
-            />
-            <AppRoutes />
-            <AIAssistantModal />
-            <AIFloatingTrigger />
-          </AIProvider>
+          <Toaster
+            position="top-right"
+            toastOptions={{
+              duration: 3000,
+              style: { background: "var(--surface-2)", color: "var(--text-1)", border: "1px solid var(--border)" },
+            }}
+          />
+          <AppRoutes />
         </LanguageProvider>
       </AuthProvider>
     </BrowserRouter>

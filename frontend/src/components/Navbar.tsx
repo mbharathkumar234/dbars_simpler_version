@@ -7,7 +7,6 @@ import {
 } from "lucide-react";
 import { useAuth } from "../contexts/AuthContext";
 import { useLanguage, LANGUAGE_LABELS, type Language } from "../contexts/LanguageContext";
-import { useAI } from "../contexts/AIContext";
 import { ThemeToggle } from "./ThemeToggle";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import { MetroMapModal } from "./MetroMapModal";
@@ -15,7 +14,6 @@ import { MetroMapModal } from "./MetroMapModal";
 export default function Navbar() {
   const { user, logout, isAdmin, isDepot, isAuthenticated } = useAuth();
   const { lang, setLang, t } = useLanguage();
-  const { openAI } = useAI();
   const [theme, setTheme] = useLocalStorage<"light" | "dark">("bmtc-theme", "dark");
   const [menuOpen, setMenuOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
@@ -95,20 +93,6 @@ export default function Navbar() {
           </Link>
         ))}
 
-        {/* Ask AI Trigger Button -- signed-in only; the assistant is authenticated. */}
-        {isAuthenticated && (
-        <button
-          type="button"
-          onClick={() => openAI()}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold text-white shadow-sm hover:opacity-90 hover:scale-105 active:scale-95 transition-all cursor-pointer"
-          style={{ background: "var(--gradient-brand)" }}
-          title="Open DBARS AI Assistant (Alt+A)"
-        >
-          <Bot size={15} />
-          <span>Ask AI</span>
-          <Sparkles size={12} className="opacity-80" />
-        </button>
-        )}
 
         <div className="lang-dropdown">
           <button className="icon-button" onClick={() => setLangOpen(!langOpen)} title="Change language" type="button">
@@ -196,7 +180,6 @@ export default function Navbar() {
                   Account & Metro Map
                 </div>
                 {[
-                  { icon: <Bot size={16} style={{ color: 'var(--brand)' }} />, label: "✨ DBARS AI Copilot", action: () => { setMenuOpen(false); openAI(); } },
                   { icon: <Map size={16} style={{ color: 'var(--brand)' }} />, label: "🔍 Enlarge & View Metro Map 2025", action: () => { setMenuOpen(false); setShowMetroModal(true); } },
                   { icon: <UserCircle size={16} />, label: "Profile", action: () => go("/dashboard") },
                   { icon: <Settings size={16} />, label: "Settings", action: () => {} },

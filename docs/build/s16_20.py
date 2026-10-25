@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
-"""Sections 16-20: AI/ML, external services, errors, config, security."""
+"""Sections 16-20: ML, external services, errors, config, security."""
 from style import bullets, callout, code, evidence, h, numbered, page_break, para, table
 
 
 def section_16(doc):
-    h(doc, 1, "16. AI / ML / LLM Deep Dive")
+    h(doc, 1, "16. ML & Search Deep Dive")
 
     h(doc, 2, "16.1 The honest headline")
     callout(doc, "No model decides which bus you catch",
@@ -12,11 +12,11 @@ def section_16(doc):
             "file and no inference API. CONFIRMED: no .pkl or .h5 weights, and no model-provider call "
             "on any path reachable from /predict. Everything in this section describes that engine.",
             warn=True)
-    para(doc, "This section was written before the AI Intelligence Layer existed and originally said "
+    para(doc, "This section was written before the Intelligence Layer existed and originally said "
               "the repository contained no embeddings and no vector database. That is no longer true: "
-              "backend/app/ai carries a FAISS vector store, an embedding provider and an optional "
-              "Gemini binding - see Sections 40 to 42. The two are separate subsystems, and the "
-              "distinction is the whole point. Claiming the BUS PREDICTOR uses AI is still a claim an "
+              "backend/app/intelligence carries a FAISS vector store, an embedding provider and an optional "
+              "LLM binding - see Sections 40 to 42. The two are separate subsystems, and the "
+              "distinction is the whole point. Claiming the BUS PREDICTOR uses system is still a claim an "
               "examiner could disprove in thirty seconds.")
     para(doc, "What the engine actually contains is a classical information-retrieval and graph-search "
               "system, plus a small benchmark harness that scores four candidate ranking strategies. "
@@ -138,15 +138,15 @@ def section_16(doc):
               "and one transfer). It is closer to how a search engine or a journey planner works than "
               "to how a neural network works.")
 
-    h(doc, 2, "16.6 Where the word AI does appear, and what to say")
-    para(doc, "Two different things have carried the label. The older one is the \"AI assistant\" "
+    h(doc, 2, "16.6 Where misleading terminology does appear, and what to say")
+    para(doc, "Two different things have carried the label. The older one is the \"assistant\" "
               "panel (AssistantPanel.tsx): free text such as \"Majestic to Whitefield\", parsed by "
               "string splitting on separator words, then the same /predict call the form makes. No "
               "language model is behind that, and calling it an assistant overstated it.")
-    para(doc, "The newer one is the DBARS AI Copilot, which is a real retrieval system with grounding "
+    para(doc, "The newer one is the DBARS Assistant, which is a real retrieval system with grounding "
               "checks, role-gated read-only tools and an optional LLM (Sections 40 to 42). When an "
-              "examiner asks about \"the AI\", establish which one they mean before answering.")
-    para(doc, "The honest description is \"natural-language input\", not \"AI assistant\". If an "
+              "examiner asks about \"the system\", establish which one they mean before answering.")
+    para(doc, "The honest description is \"natural-language input\", not \"assistant\". If an "
               "examiner asks, say exactly that - the parsing is deterministic and you can show the "
               "twelve lines that do it.")
     evidence(doc, "frontend/src/components/AssistantPanel.tsx -> extractStopCandidatePairs()")
